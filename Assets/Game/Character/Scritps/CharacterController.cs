@@ -5,7 +5,13 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour {
 
     [SerializeField] private float health;
-    private int keysAmount;
+    public int keysAmount;
+
+    public SpriteRenderer m_roof;
+    public SpriteRenderer m_back;
+    public SpriteRenderer m_front;
+    public SpriteRenderer m_backDoor;
+    public SpriteRenderer m_frontDoor;
 
     private bool canBeAttacked;
     private bool CanBeAttacked
@@ -20,5 +26,33 @@ public class CharacterController : MonoBehaviour {
     {
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag.Equals("Key")) {
+            keysAmount++;
+            Destroy(other.gameObject);
+        }
+        if (other.tag.Equals("HouseBack"))
+        {
+            ControlSpriteStates(false, false, true, true, true);
+
+        }
+        if (other.tag.Equals("HouseFront"))
+        {
+            ControlSpriteStates(true, true, false, false, false);
+        }
+        if (other.tag.Equals("HouseInside"))
+        {
+        }
+    }
     
+    private void ControlSpriteStates(bool back, bool backDoor, bool front, bool frontDoor, bool roof)
+    {
+        m_back.enabled = back;
+        m_backDoor.enabled = backDoor;
+        m_front.enabled = front;
+        m_frontDoor.enabled = frontDoor;
+        m_frontDoor.enabled = roof;
+    }
 }
