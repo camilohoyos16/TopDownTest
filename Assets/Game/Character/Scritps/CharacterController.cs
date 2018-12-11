@@ -7,6 +7,7 @@ public class CharacterController : MonoBehaviour {
 
     [SerializeField] private float health;
     private float currentHealth;
+    private float globalHealth;
 
     public int keysAmount;
 
@@ -17,8 +18,13 @@ public class CharacterController : MonoBehaviour {
     public SpriteRenderer m_frontDoor;
 
     public Image healthImage;
-
+    public AudioSource deathAudioSource;
     public GameObject canvasGame;
+
+    private void Start()
+    {
+        globalHealth = health;
+    }
 
     public void LoseHealth(float amountOfDamage)
     {
@@ -32,7 +38,7 @@ public class CharacterController : MonoBehaviour {
         {
             yield return null;
             currentHealth -= Time.deltaTime;
-            healthImage.fillAmount = currentHealth / 100;
+            healthImage.fillAmount = currentHealth / globalHealth;
         }
         currentHealth = health;
     }
@@ -41,6 +47,7 @@ public class CharacterController : MonoBehaviour {
     {
         if (currentHealth < 0)
         {
+            deathAudioSource.Play();
             canvasGame.SetActive(true);
         }
     }

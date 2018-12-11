@@ -12,6 +12,8 @@ public class EnemyController : MonoBehaviour {
 
     [HideInInspector] public NavMeshAgent m_NavMeshAgent;
 
+    public AudioSource deathAudioSOurce;
+
     // Use this for initialization
     void Awake () {
         m_NavMeshAgent = GetComponent<NavMeshAgent>();
@@ -44,6 +46,7 @@ public class EnemyController : MonoBehaviour {
         {
             healthGO.SetActive(false);
             GameMenu.instance.enemiesAlive--;
+            deathAudioSOurce.Play();
             Destroy(gameObject);
         }
     }

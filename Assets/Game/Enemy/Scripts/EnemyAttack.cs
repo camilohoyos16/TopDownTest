@@ -9,6 +9,7 @@ public class EnemyAttack : CharacterShootingState
 
     private GameObject characterReference;
     private Vector3 aimVector;
+
     private void Awake()
     {
         m_EnemyController = GetComponent<EnemyController>();
@@ -30,8 +31,11 @@ public class EnemyAttack : CharacterShootingState
 
     public new void Update()
     {
-        Shoot();
-        FollowCharacter();
+        if (EnemyStatesManager.EnemyStateCurrent == enemyStates.attacking)
+        {
+            Shoot();
+            FollowCharacter();
+        }
     }
 
     private void FollowCharacter()

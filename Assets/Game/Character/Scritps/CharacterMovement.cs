@@ -17,7 +17,7 @@ public class CharacterMovement : MonoBehaviour
 
     //Components variables
     private Rigidbody m_RigidBody;
-
+    public AudioSource stepsSounds;
     private CharacterInputs m_Inputs;
 
     void Awake()
@@ -42,8 +42,14 @@ public class CharacterMovement : MonoBehaviour
         m_RigidBody.velocity = movementVector;
     }
 
+    private void OnEnable()
+    {
+        stepsSounds.Play();
+    }
+
     private void OnDisable()
     {
+        stepsSounds.Stop();
         movementVector = Vector3.zero;
         m_RigidBody.velocity = movementVector;
     }

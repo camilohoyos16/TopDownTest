@@ -8,6 +8,7 @@ public class CharacterShootingState : MonoBehaviour {
     [SerializeField] private float shootVelocity;
     [SerializeField] private GameObject spawnBulletsPoint;
     public bool canShoot;
+    [SerializeField] private AudioSource m_AudioSourceShooting;
 
     private bool isFirstTime;
 
@@ -46,6 +47,8 @@ public class CharacterShootingState : MonoBehaviour {
     {
         if (canShoot)
         {
+            if(m_AudioSourceShooting != null)
+            m_AudioSourceShooting.Play();
             canShoot = false;
             if(onStartShooting != null)
             {
@@ -65,8 +68,10 @@ public class CharacterShootingState : MonoBehaviour {
         canShoot = true;
     }
 
-    private void StopShooting()
+    protected void StopShooting()
     {
+        if (m_AudioSourceShooting != null)
+            m_AudioSourceShooting.Stop();
         canShoot = false;
         StopAllCoroutines();
         if (onStopShooting != null)

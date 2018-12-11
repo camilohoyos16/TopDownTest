@@ -20,11 +20,17 @@ public class EnemyStatesManager : MonoBehaviour {
         get { return enemyStateCurrent; }
     }
 
+
     [SerializeField] private EnemyAttack m_EnemyAttack;
     [SerializeField] private EnemyPatrol m_EnemyPatrol;
 
     public Action onStartShooting;
     public Action onEndShooting;
+
+    public AudioSource m_AudioSourceFireVoice;
+    public AudioSource m_AudioSourceShooting;
+
+
 
     private void Start()
     {
@@ -46,7 +52,8 @@ public class EnemyStatesManager : MonoBehaviour {
                 m_EnemyPatrol.enabled = false;
                 break;
             case enemyStates.patrol:
-                if(onEndShooting != null)
+                m_AudioSourceShooting.Stop();
+                if (onEndShooting != null)
                 {
                     onEndShooting();
                 }
@@ -54,7 +61,9 @@ public class EnemyStatesManager : MonoBehaviour {
                 m_EnemyPatrol.enabled = true;
                 break;
             case enemyStates.attacking:
-                if(onStartShooting != null)
+                m_AudioSourceFireVoice.Play();
+                m_AudioSourceShooting.Play();
+                if (onStartShooting != null)
                 {
                     onStartShooting();
                 }
