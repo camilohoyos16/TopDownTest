@@ -54,7 +54,7 @@ public class CharacterShootingState : MonoBehaviour {
             BulletBehaviour bulletToShoot = BulletPool.Instance.GetBullet();
             bulletToShoot.gameObject.SetActive(true);
             bulletToShoot.transform.position = spawnBulletsPoint.transform.position;
-            bulletToShoot.Shoot(shootVelocity, spawnBulletsPoint.transform);
+            bulletToShoot.Shoot(shootVelocity, transform);
             StartCoroutine(CoolDownShooting());
         }
     }

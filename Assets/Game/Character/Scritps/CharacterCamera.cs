@@ -2,7 +2,6 @@
 
 public class CharacterCamera : MonoBehaviour
 {
-
     public Transform character;
     Vector3 nextCameraPosition;
     Vector3 smoothedMovement;

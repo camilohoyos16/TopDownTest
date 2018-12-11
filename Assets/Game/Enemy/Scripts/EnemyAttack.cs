@@ -37,10 +37,9 @@ public class EnemyAttack : CharacterShootingState
     private void FollowCharacter()
     {
         m_EnemyController.m_NavMeshAgent.SetDestination(characterReference.transform.position);
-        //aimVector = characterReference.transform.position;
+        aimVector = characterReference.transform.position;
         //aimVector.y = gameObject.transform.forward.y;
-        //gameObject.transform.LookAt(aimVector);
-
+        gameObject.transform.LookAt(aimVector);
 
     }
 }

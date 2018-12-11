@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour {
 
     [SerializeField] private float health;
+    private float currentHealth;
+
     public int keysAmount;
 
     public SpriteRenderer m_roof;
@@ -13,18 +16,41 @@ public class CharacterController : MonoBehaviour {
     public SpriteRenderer m_backDoor;
     public SpriteRenderer m_frontDoor;
 
-    private bool canBeAttacked;
-    private bool CanBeAttacked
-    {
-        get
-        {
-            return canBeAttacked;
-        }
-    }
+    public Image healthImage;
+
+    public GameObject canvasGame;
 
     public void LoseHealth(float amountOfDamage)
     {
+        StartCoroutine(DecreaseHealth(amountOfDamage));
+    }
 
+    IEnumerator DecreaseHealth(float amountOfDamage)
+    {
+        health -= amountOfDamage;
+        while(health < currentHealth)
+        {
+            yield return null;
+            currentHealth -= Time.deltaTime;
+            healthImage.fillAmount = currentHealth / 100;
+        }
+        currentHealth = health;
+    }
+
+    private void Update()
+    {
+        if (currentHealth < 0)
+        {
+            canvasGame.SetActive(true);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag.Equals("Bullet"))
+        {
+            LoseHealth(other.GetComponent<BulletBehaviour>().damage);
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -33,11 +59,11 @@ public class CharacterController : MonoBehaviour {
             keysAmount++;
             Destroy(other.gameObject);
         }
-        if (other.tag.Equals("HouseBack"))
+        if (other.tag.Equals("HouseBack") || other.tag.Equals("BackDoor"))
         {
             ControlSpriteStates(false, false, true, true, false);
         }
-        if (other.tag.Equals("HouseFront") )
+        if (other.tag.Equals("HouseFront") || other.tag.Equals("FrontDoor"))
         {
             ControlSpriteStates(true, true, false, false, false);
         }
