@@ -35,24 +35,40 @@ public class CharacterController : MonoBehaviour {
         }
         if (other.tag.Equals("HouseBack"))
         {
-            ControlSpriteStates(false, false, true, true, true);
-
+            ControlSpriteStates(false, false, true, true, false);
         }
-        if (other.tag.Equals("HouseFront"))
+        if (other.tag.Equals("HouseFront") )
         {
             ControlSpriteStates(true, true, false, false, false);
         }
         if (other.tag.Equals("HouseInside"))
         {
+            ControlSpriteStates(true, true, true, true, false);
         }
     }
-    
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag.Equals("HouseBack"))
+        {
+            ControlSpriteStates(true, true, true, true, true);
+        }
+        if (other.tag.Equals("HouseFront"))
+        {
+            ControlSpriteStates(true, true, true, true, true);
+        }
+        if (other.tag.Equals("HouseInside"))
+        {
+            ControlSpriteStates(true, true, true, true, true);
+        }
+    }
+
     private void ControlSpriteStates(bool back, bool backDoor, bool front, bool frontDoor, bool roof)
     {
         m_back.enabled = back;
         m_backDoor.enabled = backDoor;
         m_front.enabled = front;
         m_frontDoor.enabled = frontDoor;
-        m_frontDoor.enabled = roof;
+        m_roof.enabled = roof;
     }
 }
