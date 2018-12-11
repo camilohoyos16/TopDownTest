@@ -343,7 +343,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: shootVelocity
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 195189821392633044, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
@@ -353,7 +353,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: coolDownTimer
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c113de585c686664bab1f34af73a0c47, type: 2}
@@ -3364,12 +3364,17 @@ Prefab:
     - target: {fileID: 114681022361284140, guid: 05834940ac526aa49ae9c93104df2d2b,
         type: 2}
       propertyPath: shootVelocity
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 114194372433792140, guid: 05834940ac526aa49ae9c93104df2d2b,
         type: 2}
       propertyPath: health
-      value: 10
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114681022361284140, guid: 05834940ac526aa49ae9c93104df2d2b,
+        type: 2}
+      propertyPath: coolDownTimer
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05834940ac526aa49ae9c93104df2d2b, type: 2}
@@ -5222,7 +5227,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: shootVelocity
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 195189821392633044, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
@@ -5232,7 +5237,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: coolDownTimer
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c113de585c686664bab1f34af73a0c47, type: 2}
@@ -7777,7 +7782,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: shootVelocity
-      value: 200
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 195189821392633044, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
@@ -7787,7 +7792,7 @@ Prefab:
     - target: {fileID: 114326669444650418, guid: c113de585c686664bab1f34af73a0c47,
         type: 2}
       propertyPath: coolDownTimer
-      value: 0.35
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c113de585c686664bab1f34af73a0c47, type: 2}
